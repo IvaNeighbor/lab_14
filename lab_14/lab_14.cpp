@@ -1,19 +1,21 @@
 ﻿#include <stdio.h>
+#define MAX_SIZE 100
 
 int main() {
-    int n;
+    int x;
 
     // Запитуємо користувача про розмір масиву
-    printf_s("Введіть розмір масиву: ");
-    scanf_s("%d", &n);
+    printf_s("Enter size of massive(not more than %d): ", MAX_SIZE);
+    scanf_s("%d", &x);
 
     // Ініціалізуємо масив та вказівники
-    int array[n];
+    int array[MAX_SIZE];
     int* minPtr, * maxPtr;
 
     // Зчитуємо елементи масиву
-    printf_s("Введіть елементи масиву:\n");
-    for (int i = 0; i < n; i++) {
+    printf_s("Enter elements of massive:\n");
+    for (int i = 0; i < x; i++) {
+        printf_s("arr[%d]: ", i);
         scanf_s("%d", &array[i]);
     }
 
@@ -22,7 +24,7 @@ int main() {
     maxPtr = &array[0];
 
     // Знаходимо мінімум та максимум
-    for (int i = 1; i < n; i++) {
+    for (int i = 1; i < x; i++) {
         if (*minPtr > array[i]) {
             minPtr = &array[i];
         }
@@ -35,9 +37,9 @@ int main() {
     int distance = maxPtr - minPtr;
 
     // Виводимо результати
-    printf_s("Мінімальне значення: %d\n", *minPtr);
-    printf_s("Максимальне значення: %d\n", *maxPtr);
-    printf_s("Відстань між позиціями: %d\n", distance);
+    printf_s("min value: %d\n", *minPtr);
+    printf_s("max value: %d\n", *maxPtr);
+    printf_s("Distance between max and min: %d\n", distance);
 
     return 0;
 }
